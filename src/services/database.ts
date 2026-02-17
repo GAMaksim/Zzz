@@ -129,7 +129,7 @@ export function getRealm(): Realm {
 // CRUD — UserSettings
 // ==========================================
 
-export function getUserSettings(): UserSettings | undefined {
+export function getUserSettings(): UserSettings | null {
     const realm = getRealm();
     return realm.objectForPrimaryKey<UserSettings>('UserSettings', 'default');
 }
@@ -159,7 +159,7 @@ export function getSleepSchedules(): Realm.Results<SleepSchedule> {
 
 export function getScheduleForDay(
     dayOfWeek: number,
-): SleepSchedule | undefined {
+): SleepSchedule | null {
     const realm = getRealm();
     return realm.objectForPrimaryKey<SleepSchedule>(
         'SleepSchedule',
@@ -184,7 +184,7 @@ export function updateScheduleForDay(
 // CRUD — SleepRecord
 // ==========================================
 
-export function getSleepRecords(limit?: number): Realm.Results<SleepRecord> {
+export function getSleepRecords(_limit?: number): Realm.Results<SleepRecord> {
     const realm = getRealm();
     const records = realm
         .objects<SleepRecord>('SleepRecord')
